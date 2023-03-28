@@ -48,7 +48,7 @@ public class TodoController {
             List<TodoEntity> entities=service.create(entity);
 
             // (5) 자바 스트림을 이용해 리턴된 엔티티 리스트를 TodoDTO리스트로 변환한다.
-            List<TodoDTO> dtos= entities.stream().map(TodoDTO::new).toList();
+            List<TodoDTO> dtos= entities.stream().map(TodoDTO::new).collect(Collectors.toList());
 
             // (6) 변환된 TodoDTO 리스트를 이용해 ResponseDTO 를 초기화한다.
             ResponseDTO<TodoDTO> response=ResponseDTO.<TodoDTO>builder().data(dtos).build();
@@ -73,7 +73,7 @@ public class TodoController {
         List<TodoEntity> entities=service.retrieve(temporaryUserId);
 
         // (2) 자바 스트림을 이용해 리턴된 엔티티 리스트를 TodoDTO 리스트로 변환한다.
-        List<TodoDTO> dtos=entities.stream().map(TodoDTO::new).toList();
+        List<TodoDTO> dtos=entities.stream().map(TodoDTO::new).collect(Collectors.toList());
 
         // (3) 변환된 TodoDTO 리스트를 이용해 ResponseDTO를 초기화한다.
         ResponseDTO<TodoDTO> response=ResponseDTO.<TodoDTO>builder().data(dtos).build();
@@ -96,7 +96,7 @@ public class TodoController {
         List<TodoEntity> entities=service.update(entity);
 
         // (4) 자바 스트림을 이용해 리턴된 엔티티 리스트를 TodoDTO 리스트로 변환한다.
-        List<TodoDTO> dtos= entities.stream().map(TodoDTO::new).toList();
+        List<TodoDTO> dtos= entities.stream().map(TodoDTO::new).collect(Collectors.toList());
 
         // (5) 변환된 TodoDTO 리스트를 이용해 ResponseDTO를 초기화한다.
         ResponseDTO<TodoDTO> response=ResponseDTO.<TodoDTO>builder().data(dtos).build();
@@ -120,7 +120,7 @@ public class TodoController {
             List<TodoEntity> entities=service.delete(entity);
 
             // (4) 자바 스트림을 이용해 리턴된 엔티티 리스트를 TodoDTO 리스트로 변환한다.
-            List<TodoDTO> dtos=entities.stream().map(TodoDTO::new).toList();
+            List<TodoDTO> dtos=entities.stream().map(TodoDTO::new).collect(Collectors.toList());
 
             // (5) 변환된 TodoDTO 리스트를 이용해 ResponseDTO를 초기화한다.
             ResponseDTO<TodoDTO> response=ResponseDTO.<TodoDTO>builder().data(dtos).build();
