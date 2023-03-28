@@ -22,9 +22,10 @@ public class UserService {
             throw new RuntimeException("Email already exists");
         }
 
-        return userRepository.save(userEntity);
+        return userRepository.save(userEntity); //리포지터리에 가입한 유저 저장
     }
 
+    //로그인 시 인증에 사용할 메서드
     public UserEntity getByCredentials(final String email, final String password){
         return userRepository.findByEmailAndPassword(email, password);
     }
